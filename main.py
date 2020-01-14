@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from pprint import pprint
 import sys
 
 def f(n):
@@ -14,18 +13,15 @@ def f(n):
     # 1:(n-1),...,(n-1):1
     for i in range(1, n):
 
-        left, right = f(n-i), f(i)
+        lefts, rights = f(n-i), f(i)
 
-        l.append("(%s+%s)"%(left, right))
-        l.append("%s*%s"%(left, right))
+        for left in lefts:
+            for right in rights:
+                l.append("(%s+%s)"%(left, right))
+                l.append("%s*%s"%(left, right))
 
     return l
 
-
-def exe(n):
-    ans = f(n)
-    for a in ans:
-        print(a)
 
 if __name__ == "__main__":
 
